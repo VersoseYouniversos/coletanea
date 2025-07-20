@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -557,8 +557,39 @@ body.modo-claro .indice-horizontal li a {
     function toggleLetra(button) {
       const conteudo = button.nextElementSibling;
       const expanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', !expanded);
+      const novoEstado = !expanded;
+      
+      button.setAttribute('aria-expanded', novoEstado);
       conteudo.classList.toggle('ativo');
+
+      // Obter o ID da letra a partir do container pai
+      const letraContainer = button.closest('.letra-musical');
+      const letraId = letraContainer.id;
+      const nomeMusica = letraContainer.getAttribute('data-titulo');
+      
+      // Converter título para slug (formato usado nos links)
+      const slugMusica = nomeMusica
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+        .replace(/[^a-z0-9\s-]/g, '') // Remove caracteres especiais
+        .replace(/\s+/g, '-') // Substitui espaços por hífens
+        .replace(/-+/g, '-') // Remove hífens duplicados
+        .trim();
+
+      // Copiar link ao abrir
+      if (novoEstado) {
+        const baseURL = window.location.origin + window.location.pathname;
+        const link = `${baseURL}#${slugMusica}`;
+        navigator.clipboard.writeText(link)
+          .then(() => console.log("Link copiado!"))
+          .catch(() => console.log("Erro ao copiar link"));
+      }
+
+      // Destacar faixa ativa no índice
+      document.querySelectorAll('.indice-horizontal a').forEach(link => link.classList.remove('ativo'));
+      const linkAtivo = document.querySelector(`.indice-horizontal a[href="#${slugMusica}"]`);
+      if (linkAtivo) linkAtivo.classList.add('ativo');
     }
 
     function abrirModalQR() {
@@ -569,131 +600,80 @@ body.modo-claro .indice-horizontal li a {
       document.getElementById('qrModal').style.display = 'none';
     }
 
-function abrirModalAutor() {
-  document.getElementById('autorModal').style.display = 'block';
-}
-function fecharModalAutor() {
-  document.getElementById('autorModal').style.display = 'none';
-}
-
-function abrirModalDoacao() {
-  document.getElementById('doacaoModal').style.display = 'block';
-}
-function fecharModalDoacao() {
-  document.getElementById('doacaoModal').style.display = 'none';
-}
-
-
-function abrirLetraECopiar(botao, conteudoId, nomeMusica) {
-  const faixasEmBreve = [
-    "deixa-ser",
-    "uma-voz-que-me-diz",
-    "retratos-somos-nao-sos-e-nao-so",
-    "se-por-um-lado"
-  ];
-
-  if (faixasEmBreve.includes(nomeMusica)) {
-    alert("Essa faixa será lançada em breve!");
-    return;
-  }
-
-  const coresPorFaixa = {
-    "bora-ate-a-vitoria": "#FF5722",
-    "um-abraco-do-tamanho-do-mundo": "#00BCD4",
-    "deixa-ser": "#8BC34A",
-    "a-vida-abraca": "#3F51B5",
-    "hoje-eu-vou-ser-so-sol": "#FFC107",
-    "quem-sabe-um-dia-a-gente-aprende-a-amar": "#E91E63",
-    "como-se-fosse-hoje": "#009688",
-    "guerra-nao-e-partida-de-futebol": "#F44336",
-    "que-a-graca-esteja": "#2196F3",
-    "uma-voz-que-me-diz": "#795548",
-    "suspira-supera": "#FF9800",
-    "alma-leve": "#9C27B0",
-    "conexoes": "#4CAF50",
-    "decola-nave-escola": "#673AB7",
-    "quem-eles-sao-depois-das-eleicoes": "#607D8B",
-    "retratos-somos-nao-sos-e-nao-so": "#9E9E9E",
-    "alimento": "#CDDC39",
-    "palavra-viva": "#3F51B5",
-    "jardim-cantante": "#4CAF50",
-    "sem-rolar-rolo-rolou": "#FFEB3B",
-    "continua": "#607D8B",
-    "se-por-um-lado": "#795548",
-    "paz-nas-ideias": "#8BC34A"
-  };
-
-  const ritmosPorFaixa = {
-    "bora-ate-a-vitoria": "0.8s",
-    "um-abraco-do-tamanho-do-mundo": "1.2s",
-    "a-vida-abraca": "1.6s",
-    "hoje-eu-vou-ser-so-sol": "1s",
-    "quem-sabe-um-dia-a-gente-aprende-a-amar": "1.7s",
-    "como-se-fosse-hoje": "1.3s",
-    "guerra-nao-e-partida-de-futebol": "0.9s",
-    "que-a-graca-esteja": "1.4s",
-    "suspira-supera": "1.1s",
-    "alma-leve": "1.8s",
-    "conexoes": "1.2s",
-    "decola-nave-escola": "1s",
-    "quem-eles-sao-depois-das-eleicoes": "1.5s",
-    "alimento": "1.2s",
-    "palavra-viva": "1.6s",
-    "jardim-cantante": "1.3s",
-    "sem-rolar-rolo-rolou": "1s",
-    "continua": "1.4s",
-    "paz-nas-ideias": "1.2s"
-  };
-
-  const conteudo = document.getElementById(conteudoId);
-  const expandido = botao.getAttribute('aria-expanded') === 'true';
-  const novoEstado = !expandido;
-  botao.setAttribute('aria-expanded', novoEstado);
-  conteudo.classList.toggle('ativo');
-
-  // Copiar link ao abrir
-  if (novoEstado) {
-    const baseURL = window.location.origin;
-    const link = `${baseURL}/${nomeMusica}`;
-    navigator.clipboard.writeText(link)
-      .then(() => alert("Link copiado!"))
-      .catch(() => alert("Erro ao copiar link"));
-  }
-
-  // Animar barrinhas
-  const barraContainer = botao.parentElement.querySelector('.animacao-som');
-  barraContainer.innerHTML = "";
-  barraContainer.setAttribute('data-musica', nomeMusica);
-
-  if (novoEstado) {
-    for (let i = 0; i < 4; i++) {
-      const barra = document.createElement('span');
-      barraContainer.appendChild(barra);
+    function abrirModalAutor() {
+      document.getElementById('autorModal').style.display = 'block';
     }
 
-    const duracao = ritmosPorFaixa[nomeMusica];
-    if (duracao) {
-      barraContainer.querySelectorAll('span').forEach(barra => {
-        barra.style.animationDuration = duracao;
+    function fecharModalAutor() {
+      document.getElementById('autorModal').style.display = 'none';
+    }
+
+    function abrirModalDoacao() {
+      document.getElementById('doacaoModal').style.display = 'block';
+    }
+
+    function fecharModalDoacao() {
+      document.getElementById('doacaoModal').style.display = 'none';
+    }
+
+    // Função para scroll suave quando clicar nos links do índice
+    document.addEventListener('DOMContentLoaded', function() {
+      // Adicionar event listeners para os links do índice
+      document.querySelectorAll('.indice-horizontal a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          const targetId = href.substring(1); // Remove o #
+          
+          // Encontrar a letra correspondente pelo slug
+          const letraContainers = document.querySelectorAll('.letra-musical');
+          let targetContainer = null;
+          
+          letraContainers.forEach(container => {
+            const titulo = container.getAttribute('data-titulo');
+            const slug = titulo
+              .toLowerCase()
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .replace(/[^a-z0-9\s-]/g, '')
+              .replace(/\s+/g, '-')
+              .replace(/-+/g, '-')
+              .trim();
+            
+            if (slug === targetId) {
+              targetContainer = container;
+            }
+          });
+          
+          if (targetContainer) {
+            // Scroll suave até o elemento
+            targetContainer.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'center' 
+            });
+            
+            // Abrir a letra automaticamente
+            const button = targetContainer.querySelector('.botao-toggle');
+            const conteudo = targetContainer.querySelector('.conteudo-letra');
+            
+            if (button && !conteudo.classList.contains('ativo')) {
+              toggleLetra(button);
+            }
+          }
+        });
       });
-    }
 
-    const corPersonalizada = coresPorFaixa[nomeMusica];
-    if (corPersonalizada) {
-      barraContainer.querySelectorAll('span').forEach(barra => {
-        barra.style.backgroundColor = corPersonalizada;
-      });
-    }
-  }
-
-  // Destacar faixa ativa no índice
-  document.querySelectorAll('.indice-horizontal a').forEach(link => link.classList.remove('ativo'));
-  const linkAtivo = document.querySelector(`.indice-horizontal a[href="#${nomeMusica}"]`);
-  if (linkAtivo) linkAtivo.classList.add('ativo');
-}
-
-
-
+      // Verificar se há hash na URL ao carregar a página
+      if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        const link = document.querySelector(`.indice-horizontal a[href="#${hash}"]`);
+        if (link) {
+          setTimeout(() => {
+            link.click();
+          }, 500);
+        }
+      }
+    });
   </script>
 </head>
 
@@ -765,7 +745,7 @@ function abrirLetraECopiar(botao, conteudoId, nomeMusica) {
     <div style="text-align: center; margin: 2rem 0;">
       <hr style="border: none; border-top: 2px dashed #ccc; width: 60%;" />
       <p style="font-style: italic; color: #555; margin-top: 1rem; font-size: 1.1rem;">
-        🌟 “Uma coletânea de <strong>letras autorais</strong> que emocionam, inspiram e convidam à transformação.” 🌟
+        🌟 "Uma coletânea de <strong>letras autorais</strong> que emocionam, inspiram e convidam à transformação." 🌟
 
 <p><em>Há faixas com utilização de Inteligência Artificial para a realização de voz e melodia. </em>
     </div>
