@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coletânea de Letras – O Que Um Abraço Transforma em Vitória?</title>
+
+  <!-- Tipografia -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" 
+rel="stylesheet" />
+
+  <!-- Meta social -->
+  <meta property="og:title" content="O Que Um Abraço Transforma em Vitória?" />
+  <meta property="og:description" content="Uma coletânea de letras autorais que emocionam, inspiram e convidam à transformação." />
+  <meta property="og:image" content="URL-DA-SUA-CAPA.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Estilos -->
+  <style>
+    :root {
+      --primary: #3498db;
+      --accent: #28a745;
+      --dark: #2c3e50;
+      --light: #f4f4f4;
+      --text: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    body.modo-escuro {
+      background: #1c1c1c;
+      color: #f0f0f0;
+    }
+
+    header.web-header {
+      background: linear-gradient(45deg, var(--dark), var(--primary));
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom: 3px solid var(--primary);
+    }
+
+    header.web-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin: 0.5rem 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    }
+
+    header.web-header .phrase {
+      font-size: 1.4rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* 🌈 Cores personalizadas por faixa (slug) */
+    .animacao-som[data-musica="bora-ate-a-vitoria"] span {
+      background: #FF5722; /* energia vibrante */
+    }
+
+    .animacao-som[data-musica="um-abraco-do-tamanho-do-mundo"] span {
+      background: #00BCD4; /* azul abraço */
+    }
+
+    .animacao-som[data-musica="deixa-ser"] span {
+      background: #8BC34A; /* verde esperança */
+    }
+
+    .animacao-som[data-musica="a-vida-abraca"] span {
+      background: #3F51B5; /* azul contemplativo */
+    }
+
+    .animacao-som[data-musica="hoje-eu-vou-ser-so-sol"] span {
+      background: #FFC107; /* amarelo solar */
+    }
+
+    .animacao-som[data-musica="quem-sabe-um-dia-a-gente-aprende-a-amar"] span {
+      background: #E91E63; /* rosa amor */
+    }
+
+    .animacao-som[data-musica="como-se-fosse-hoje"] span {
+      background: #009688; /* verde tempo */
+    }
+
+    .animacao-som[data-musica="guerra-nao-e-partida-de-futebol"] span {
+      background: #F44336; /* vermelho denúncia */
+    }
+
+    .animacao-som[data-musica="que-a-graca-esteja"] span {
+      background: #2196F3; /* azul sereno */
+    }
+
+    .animacao-som[data-musica="uma-voz-que-me-diz"] span {
+      background: #795548; /* marrom profundo */
+    }
+
+    .animacao-som[data-musica="suspira-supera"] span {
+      background: #FF9800; /* laranja superação */
+    }
+
+    .animacao-som[data-musica="alma-leve"] span {
+      background: #9C27B0; /* roxo leveza */
+    }
+
+    .animacao-som[data-musica="conexoes"] span {
+      background: #4CAF50; /* verde conexões */
+    }
+
+    .animacao-som[data-musica="decola-nave-escola"] span {
+      background: #673AB7; /* roxo cósmico */
+    }
+
+    .animacao-som[data-musica="quem-eles-sao-depois-das-eleicoes"] span {
+      background: #607D8B; /* cinza político */
+    }
+
+    .animacao-som[data-musica="retratos-somos-nao-sos-e-nao-so"] span {
+      background: #9E9E9E; /* neutro introspectivo */
+    }
+
+    .animacao-som[data-musica="alimento"] span {
+      background: #CDDC39; /* verde nutritivo */
+    }
+
+    .animacao-som[data-musica="palavra-viva"] span {
+      background: #3F51B5; /* azul profundo */
+    }
+
+    .animacao-som[data-musica="jardim-cantante"] span {
+      background: #4CAF50; /* verde natureza */
+    }
+
+    .animacao-som[data-musica="sem-rolar-rolo-rolou"] span {
+      background: #FFEB3B; /* amarelo irreverente */
+    }
+
+    .animacao-som[data-musica="continua"] span {
+      background: #607D8B; /* cinza continuidade */
+    }
+
+    .animacao-som[data-musica="se-por-um-lado"] span {
+      background: #795548; /* marrom dualidade */
+    }
+
+    .animacao-som[data-musica="paz-nas-ideias"] span {
+      background: #8BC34A; /* verde esperança */
+    }
+
+    /* 🌀 Ritmos suaves para faixas delicadas */
+    @keyframes ondas-suaves {
+      0%, 100% {
+        transform: scaleY(0.4);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scaleY(0.85);
+        opacity: 1;
+      }
+    }
+
+    .animacao-som[data-musica="alma-leve"] span,
+    .animacao-som[data-musica="palavra-viva"] span,
+    .animacao-som[data-musica="a-vida-abraca"] span,
+    .animacao-som[data-musica="quem-sabe-um-dia-a-gente-aprende-a-amar"] span,
+    .animacao-som[data-musica="se-por-um-lado"] span {
+      animation-duration: 1.8s;
+    }
+
+    /* 🟢 Animação padrão para demais faixas */
+    @keyframes ondas {
+      0%, 100% {
+        transform: scaleY(0.3);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+    }
+
+    .animacao-som {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+      height: 1rem;
+      margin-left: 0.5rem;
+    }
+
+    .animacao-som span {
+      width: 4px;
+      height: 100%;
+      border-radius: 2px;
+      transform-origin: bottom;
+      animation: ondas 1.2s ease-in-out infinite;
+    }
+
+    /* Alternância entre barrinhas */
+    .animacao-som span:nth-child(1) { animation-delay: 0s; }
+    .animacao-som span:nth-child(2) { animation-delay: 0.2s; }
+    .animacao-som span:nth-child(3) { animation-delay: 0.4s; }
+    .animacao-som span:nth-child(4) { animation-delay: 0.6s; }
+
+    .flex-botoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .social-share {
+      margin-top: 1rem;
+    }
+
+    .social-share a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      color: white;
+      font-size: 1.4rem;
+      text-decoration: none;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .social-share a:hover {
+      transform: scale(1.2);
+      color: #ffdd57;
+    }
+
+    nav.web-nav {
+      background: #444;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    nav.web-nav a {
+      color: white;
+      margin: 0 0.8rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav.web-nav a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .botao-toggle {
+      background: var(--primary);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .botao-toggle:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .botao-toggle:active {
+      transform: scale(0.97);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    .conteudo-letra {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background: #f9f9f9;
+      padding: 0 1rem;
+      border-radius: 5px;
+      white-space: pre-line;
+      line-height: 2;
+    }
+
+    .conteudo-letra.ativo {
+      max-height: none;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    #indice-letras h2 {
+      position: sticky;
+      top: 0;
+      background: white;
+      padding: 0.5rem;
+      z-index: 10;
+    }
+
+    .indice-horizontal {
+      display: flex;
+      overflow-x: auto;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      list-style: none;
+      scroll-behavior: smooth;
+    }
+
+    .indice-horizontal li a {
+      display: inline-block;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #333;
+      background: #f7f7f7;
+      white-space: nowrap;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .indice-horizontal li a:hover {
+      background: #e0f7fa;
+      transform: scale(1.05);
+      color: #00796B;
+    }
+
+    .indice-horizontal li a:hover::before {
+      content: "🎶 ";
+      animation: bounce 0.6s ease;
+      display: inline-block;
+    }
+
+    .indice-horizontal li a.ativo {
+      outline: 2px solid white;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+
+    .conteudo-letra.ativo {
+      animation: aparecer 0.6s ease-in-out;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-3px);
+      }
+      60% {
+        transform: translateY(-1px);
+      }
+    }
+
+    /* Modo claro alternativo */
+    body.modo-claro {
+      background: #ffffff;
+      color: #2c3e50;
+    }
+
+    body.modo-claro .botao-toggle {
+      background: #555;
+    }
+
+    body.modo-claro .indice-horizontal li a {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    .indice-horizontal li:nth-child(1) a  { background: #FF5722; color: #fff; } /* Bora Até a Vitória – laranja vitória */
+    .indice-horizontal li:nth-child(2) a  { background: #00BCD4; color: #fff; } /* Um Abraço do Tamanho do Mundo – azul abraço */
+    .indice-horizontal li:nth-child(3) a  { background: #4CAF50; color: #fff; } /* Deixa Ser – verde liberdade */
+    .indice-horizontal li:nth-child(4) a  { background: #3F51B5; color: #fff; } /* A Vida, Abraça – azul profundo */
+    .indice-horizontal li:nth-child(5) a  { background: #FFC107; color: #fff; } /* Hoje Eu Vou Ser Só Sol – amarelo solar */
+    .indice-horizontal li:nth-child(6) a  { background: #E91E63; color: #fff; } /* Amar – rosa amor */
+    .indice-horizontal li:nth-child(7) a  { background: #009688; color: #fff; } /* Como Se Fosse Hoje – verde tempo */
+    .indice-horizontal li:nth-child(8) a  { background: #F44336; color: #fff; } /* Guerra – vermelho denúncia */
+    .indice-horizontal li:nth-child(9) a  { background: #2196F3; color: #fff; } /* Que a Graça Esteja – azul serenidade */
+    .indice-horizontal li:nth-child(10) a { background: #795548; color: #fff; } /* Uma Voz Que Me Diz – marrom grave */
+    .indice-horizontal li:nth-child(11) a { background: #FF9800; color: #fff; } /* Suspira, Supera – laranja caloroso */
+    .indice-horizontal li:nth-child(12) a { background: #9C27B0; color: #fff; } /* Alma Leve – roxo contemplativo */
+    .indice-horizontal li:nth-child(13) a { background: #607D8B; color: #fff; } /* Conexões... – azul acinzentado técnico */
+    .indice-horizontal li:nth-child(14) a { background: #673AB7; color: #fff; } /* Nave Escola – roxo galáctico */
+    .indice-horizontal li:nth-child(15) a { background: #37474F; color: #fff; } /* Eleições – cinza sóbrio */
+    .indice-horizontal li:nth-child(16) a { background: #9E9E9E; color: #fff; } /* Retratos – cinza introspectivo */
+    .indice-horizontal li:nth-child(17) a { background: #8BC34A; color: #fff; } /* Alimento – verde nutritivo */
+    .indice-horizontal li:nth-child(18) a { background: #3F51B5; color: #fff; } /* Palavra Viva – azul profundo */
+    .indice-horizontal li:nth-child(19) a { background: #4CAF50; color: #fff; } /* Jardim – verde natureza */
+    .indice-horizontal li:nth-child(20) a { background: #FFEB3B; color: #333; } /* Sem Rolar Rolo – amarelo irreverente */
+    .indice-horizontal li:nth-child(21) a { background: #607D8B; color: #fff; } /* Continua... – azul acinzentado */
+    .indice-horizontal li:nth-child(22) a { background: #795548; color: #fff; } /* Se Por Um Lado – marrom dualidade */
+    .indice-horizontal li:nth-child(23) a { background: #8BC34A; color: #fff; } /* Paz nas Ideias – verde esperança */
+
+    .reticencias {
+      font-size: 1.4rem;
+      opacity: 0.6;
+      user-select: none;
+      pointer-events: none;
+      margin-left: 0.25rem;
+    }
+
+    .track-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem auto;
+      max-width: 800px;
+      background: #fdfdfd;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .track-item {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .track-number {
+      font-weight: bold;
+      color: var(--primary);
+      width: 2rem;
+    }
+
+    .track-title {
+      flex: 1;
+    }
+
+    .track-link {
+      background: var(--primary);
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .track-link:hover {
+      background: var(--accent);
+    }
+
+    .coming-soon {
+      font-style: italic;
+      color: #888;
+    }
+
+    /* Modal de QR Code */
+    #qrModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1001;
+      text-align: center;
+      padding-top: 5%;
+    }
+
+    #qrModal .modal-content {
+      background: white;
+      display: inline-block;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 90%;
+      position: relative;
+    }
+
+    #qrModal img {
+      width: 150px;
+    }
+
+    #qrModal button {
+      margin-top: 1.5rem;
+      background: #ccc;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Botão flutuante de doação */
+    .doacao-btn {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 1000;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .letra-musical {
+      margin-bottom: 1rem;
+    }
+
+    .notificacao-copia {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #28a745;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .notificacao-copia.ativo {
+      opacity: 1;
+    }
+
+    .conteudo-letra {
+      transition: max-height 0.5s ease;
+    }
+  </style>
+
+  <!-- Scripts --> 
+
+<script>
+  // Função para converter título em slug
+  function tituloParaSlug(titulo) {
+    return titulo
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
+  // Função para mostrar notificação
+  function mostrarNotificacao(mensagem) {
+    let notificacao = document.querySelector('.notificacao-copia');
+    
+    if (!notificacao) {
+      notificacao = document.createElement('div');
+      notificacao.className = 'notificacao-copia';
+      document.body.appendChild(notificacao);
+    }
+    
+    notificacao.textContent = mensagem;
+    notificacao.classList.add('ativo');
+    
+    setTimeout(() => {
+      notificacao.classList.remove('ativo');
+    }, 2000);
+  }
+
+  // Função para adicionar animação sonora
+  function adicionarAnimacaoSom(button, slug) {
+    const flexBotoes = button.parentElement;
+    
+    // Remover animações existentes primeiro
+    const animacoesExistentes = flexBotoes.querySelectorAll('.animacao-som');
+    animacoesExistentes.forEach(el => el.remove());
+    
+    // Criar novo container de animação
+    const barraContainer = document.createElement('div');
+    barraContainer.className = 'animacao-som';
+    barraContainer.setAttribute('data-musica', slug);
+    
+    // Criar 4 barrinhas de animação
+    for (let i = 0; i < 4; i++) {
+      const barra = document.createElement('span');
+      barraContainer.appendChild(barra);
+    }
+    
+    flexBotoes.appendChild(barraContainer);
+  }
+
+  // Função para remover animação sonora
+  function removerAnimacaoSom(button) {
+    const flexBotoes = button.parentElement;
+    const barraContainer = flexBotoes.querySelector('.animacao-som');
+    if (barraContainer) {
+      barraContainer.remove();
+    }
+  }
+
+  // Função para destacar no índice
+  function destacarNoIndice(slug) {
+    document.querySelectorAll('.indice-horizontal a').forEach(link => link.classList.remove('ativo'));
+    const linkAtivo = document.querySelector(`.indice-horizontal a[href="#${slug}"]`);
+    if (linkAtivo) linkAtivo.classList.add('ativo');
+  }
+
+  // Função principal para alternar letra
+  function toggleLetra(button) {
+    const conteudo = button.nextElementSibling;
+    const letraContainer = button.closest('.letra-musical');
+    const nomeMusica = letraContainer.getAttribute('data-titulo');
+    const slug = tituloParaSlug(nomeMusica);
+
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    const novoEstado = !expanded;
+
+    // Alternar estado da letra atual
+    button.setAttribute('aria-expanded', novoEstado);
+
+    if (novoEstado) {
+      // Abrir a letra
+      conteudo.style.maxHeight = conteudo.scrollHeight + "px";
+      conteudo.classList.add('ativo');
+
+      // Copiar link e mostrar notificação
+      const baseURL = window.location.origin + window.location.pathname;
+      const link = `${baseURL}#${slug}`;
+      
+      // Error handling melhorado para Clipboard API
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(link)
+          .then(() => mostrarNotificacao('Endereço copiado! 📋'))
+          .catch(() => mostrarNotificacao('Link: ' + link));
+      } else {
+        mostrarNotificacao('Link: ' + link);
+      }
+
+      // Adicionar animação sonora (barrinhas)
+      adicionarAnimacaoSom(button, slug);
+
+      // Atualizar URL
+      history.pushState(null, null, `#${slug}`);
+
+      // Destacar no índice
+      destacarNoIndice(slug);
+
+      // Scroll para a letra
+      setTimeout(() => {
+        letraContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    } else {
+      // Fechar a letra
+      const posicaoAtual = window.scrollY;
+      conteudo.style.maxHeight = "0";
+      // Remover a classe ativo após a transição
+      setTimeout(() => {
+        conteudo.classList.remove('ativo');
+        window.scrollTo({ top: posicaoAtual });
+      }, 500); // Tempo deve coincidir com a transição CSS (0.5s)
+
+      // Remover animação sonora
+      removerAnimacaoSom(button);
+
+      // Remover o hash da URL
+      history.pushState(null, null, window.location.pathname);
+      document.querySelectorAll('.indice-horizontal a').forEach(link => link.classList.remove('ativo'));
+    }
+  }
+
+  // Função para navegar pelo índice CORRIGIDA
+  function navegarParaLetra(slug, event) {
+    event.preventDefault();
+    
+    // Fechar todas as letras abertas
+    document.querySelectorAll('.botao-toggle[aria-expanded="true"]').forEach(btn => {
+      toggleLetra(btn); // Fecha a letra
+    });
+
+    // CORREÇÃO: Buscar pelo slug convertido para título
+    const tituloEsperado = slug.replace(/-/g, ' ');
+    const targetButton = document.querySelector(`.letra-musical[data-titulo="${tituloEsperado}"] .botao-toggle`);
+    
+    if (targetButton) {
+      // Abrir a letra
+      toggleLetra(targetButton);
+    } else {
+      console.warn(`Elemento não encontrado para slug: ${slug} (título: ${tituloEsperado})`);
+      mostrarNotificacao('Seção não encontrada: ' + tituloEsperado);
+    }
+  }
+
+  // Função para navegar até a seção de Músicas
+  function navegarParaMusicas(event) {
+    event.preventDefault();
+    document.getElementById('musicas').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Verificar URL ao carregar página
+  window.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      setTimeout(() => {
+        navegarParaLetra(hash, { preventDefault: () => {} });
+      }, 500);
+    }
+  });
+
+  // Outras funções auxiliares (MODAIS)
+  function abrirModalQR() {
+    document.getElementById('qrModal').style.display = 'block';
+  }
+
+  function fecharModalQR() {
+    document.getElementById('qrModal').style.display = 'none';
+  }
+
+  function abrirModalAutor() {
+    document.getElementById('autorModal').style.display = 'block';
+  }
+
+  function fecharModalAutor() {
+    document.getElementById('autorModal').style.display = 'none';
+  }
+
+  function abrirModalDoacao() {
+    document.getElementById('doacaoModal').style.display = 'block';
+  }
+
+  function fecharModalDoacao() {
+    document.getElementById('doacaoModal').style.display = 'none';
+  }
+
+  // Suporte a ESC para fechar modais (MELHORIA DE ACESSIBILIDADE)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      fecharModalQR();
+      fecharModalAutor();
+      fecharModalDoacao();
+    }
+  });
+</script>
+
+</head>
+
+<body>
+  <header class="web-header">
+    <p class="phrase">O Que Um Abraço Transforma em Vitória?</p>
+    <h1>Coletânea de Letras</h1>
+
+    <!-- Botões Sociais -->
+    <div class="social-share">
+      <a href="https://api.whatsapp.com/send?text=Veja%20esse%20projeto%20lindo:%20https://seudominio.com" title="Compartilhar no WhatsApp">📱</a>
+      <a href="https://twitter.com/intent/tweet?url=https://seudominio.com&text=Projeto%20transformador%20de%20letras%20autorais" title="Compartilhar no X/Twitter">🐦</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://seudominio.com" title="Compartilhar no Facebook">📘</a>
+      <a href="#" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copiado!')" title="Copiar link">🔗</a>
+    </div>
+  </header>
+
+  <nav class="web-nav">
+    <a href="#" onclick="abrirModalAutor()">Sobre o Autor</a>
+    <a href="#indice-letras">Letras</a>
+    <a href="#" onclick="abrirModalDoacao()">Doações</a>
+    <a href="#" onclick="navegarParaMusicas(event)">Músicas</a>
+  </nav>
+
+  <main style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;" id="inicio">
+    <section id="indice-letras">
+      <h2>🎶 Índice de Faixas</h2>
+      <div class="indice-container">
+        <ul class="indice-horizontal">
+          <li><a href="#bora-ate-a-vitoria" onclick="navegarParaLetra('bora-ate-a-vitoria', event)">01 – Bora Até a Vitória</a></li>
+          <li><a href="#um-abraco-do-tamanho-do-mundo" onclick="navegarParaLetra('um-abraco-do-tamanho-do-mundo', event)">02 – Um Abraço do Tamanho do Mundo</a></li>
+          <li><a href="#deixa-ser" onclick="navegarParaLetra('deixa-ser', event)">03 – Deixa Ser</a></li>
+          <li><a href="#a-vida-abraca" onclick="navegarParaLetra('a-vida-abraca', event)">04 – A Vida, Abraça</a></li>
+          <li><a href="#hoje-eu-vou-ser-so-sol" onclick="navegarParaLetra('hoje-eu-vou-ser-so-sol', event)">05 – Hoje Eu Vou Ser Só Sol</a></li>
+          <li><a href="#quem-sabe-um-dia-a-gente-aprende-a-amar" onclick="navegarParaLetra('quem-sabe-um-dia-a-gente-aprende-a-amar', event)">06 – Quem Sabe Um Dia A Gente Aprende A Amar?</a></li>
+          <li><a href="#como-se-fosse-hoje" onclick="navegarParaLetra('como-se-fosse-hoje', event)">07 – Como Se Fosse Hoje (O Dia De Amar)</a></li>
+          <li><a href="#guerra-nao-e-partida-de-futebol" onclick="navegarParaLetra('guerra-nao-e-partida-de-futebol', event)">08 – Guerra Não É Partida De Futebol</a></li>
+          <li><a href="#que-a-graca-esteja" onclick="navegarParaLetra('que-a-graca-esteja', event)">09 – Que a Graça Esteja</a></li>
+          <li><a href="#uma-voz-que-me-diz" onclick="navegarParaLetra('uma-voz-que-me-diz', event)">10 – Uma Voz Que Me Diz</a></li>
+          <li><a href="#suspira-supera" onclick="navegarParaLetra('suspira-supera', event)">11 – Suspira, Supera</a></li>
+          <li><a href="#alma-leve" onclick="navegarParaLetra('alma-leve', event)">12 – Alma Leve</a></li>
+          <li><a href="#conexoes" onclick="navegarParaLetra('conexoes', event)">13 – Conexões...</a></li>
+          <li><a href="#decola-nave-escola" onclick="navegarParaLetra('decola-nave-escola', event)">14 – Decola, Nave Escola</a></li>
+          <li><a href="#quem-eles-sao-depois-das-eleicoes" onclick="navegarParaLetra('quem-eles-sao-depois-das-eleicoes', event)">15 – Quem Eles São Depois Das Eleições?</a></li>
+          <li><a href="#retratos-somos-nao-sos-e-nao-so" onclick="navegarParaLetra('retratos-somos-nao-sos-e-nao-so', event)">16 – Retratos Somos Não Sós, e Não Só</a></li>
+          <li><a href="#alimento" onclick="navegarParaLetra('alimento', event)">17 – Alimento</a></li>
+          <li><a href="#palavra-viva" onclick="navegarParaLetra('palavra-viva', event)">18 – Palavra Viva</a></li>
+          <li><a href="#jardim-cantante" onclick="navegarParaLetra('jardim-cantante', event)">19 – Jardim Cantante</a></li>
+          <li><a href="#sem-rolar-rolo-rolou" onclick="navegarParaLetra('sem-rolar-rolo-rolou', event)">20 – Sem Rolar Rolo, Rolou</a></li>
+          <li><a href="#continua" onclick="navegarParaLetra('continua', event)">21 – Continua...</a></li>
+          <li><a href="#se-por-um-lado" onclick="navegarParaLetra('se-por-um-lado', event)">22 – Se Por Um Lado...</a></li>
+          <li><a href="#paz-nas-ideias" onclick="navegarParaLetra('paz-nas-ideias', event)">23 – Paz nas Ideias nas Ideias Sobre a Paz</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Separador com frase inspiradora -->
+    <div style="text-align: center; margin: 2rem 0;">
+      <hr style="border: none; border-top: 2px dashed #ccc; width: 60%;" />
+      <p style="font-style: italic; color: #555; margin-top: 1rem; font-size: 1.1rem;">
+        🌟 "Uma coletânea de <strong>letras autorais</strong> que emocionam, inspiram e convidam à transformação." 🌟
+      </p>
+      <p><em>Há faixas com utilização de Inteligência Artificial para a realização de voz e melodia.</em></p>
+    </div>
+
+    <!-- Banner suave com chamada para leitura -->
+    <div style="background: linear-gradient(90deg, #f0f8ff, #e6f7ff); padding: 1.5rem; border-radius: 8px; text-align: center; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      <h3 style="margin: 0; font-family: 'Playfair Display', serif; color: #2c3e50; font-size: 1.4rem;">
+        Aprecie as músicas abaixo e deixe-se tocar por cada verso 🎶
+      </h3>
+    </div>
+
+    <!-- TODAS AS 23 FAIXAS MUSICAIS CORRIGIDAS -->
+
+<!-- Faixa 01 -->
+<div id="letra1" class="letra-musical" data-titulo="bora ate a vitoria">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo1">🎵 Bora Até a Vitória</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo1">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/mUeloHQJMXs" title="Bora Até a Vitória" frameborder="0" allowfullscreen></iframe>
+    <p>Meço até tentar.<br>Sigo até conseguir.<br>Se não for é que não deu,<br>Apenas não aconteceu.<br>A ação na tentativa<br>Pode ou não servir ainda.<br>Projeção: perspectiva,<br>Razão na expectativa,<br>Coragem de quem acredita.</p>
+    <p><strong>Bora até a vitória,</strong><br>Vence quem ri e não faz chorar.<br><em>Chora se preciso a si a alma lavar.</em><br>Antes alegrias do que tentam<br>Tantas tristezas,<br>Não se causa dor<br>Pra saquear gentileza.</p>
+  </div>
+</div>
+
+<!-- Faixa 02 -->
+<div id="letra2" class="letra-musical" data-titulo="um abraco do tamanho do mundo">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo2">🎵 Um Abraço do Tamanho do Mundo</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo2">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/I3VwGTzmLWk" title="Um Abraço do Tamanho do Mundo" frameborder="0" allowfullscreen></iframe>
+    <p>Tá tudo pra certo...<br>Tem vez que quando,<br>Mesmo quando,<br>Parece ou mede<br>Um tanto quanto deserto.<br><em>Longe ou perto, tamo junto,</em><br>O coração está desperto.</p>
+    <p><strong>E se o mundo se desse...</strong><br>Um abraço do tamanho do mundo,<br>Um abraço do tamanho do mundo,<br>Um abraço do tamanho do mundo...</p>
+  </div>
+</div>
+
+<!-- Faixa 03 -->
+<div id="letra3" class="letra-musical" data-titulo="deixa ser">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo3">🎵 Deixa Ser</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo3">
+    <p><em>(Lançamento em breve!)</em></p>
+    <p><strong>Deixa ser, seja quem é.</strong><br>Deixa de ser<br>Se quem não é você.<br>Teima em crer<br>No que pode ser,<br>Se já viu que é bom,<br>E não fere, acontecer...</p>
+  </div>
+</div>
+
+<!-- Faixa 04 -->
+<div id="letra4" class="letra-musical" data-titulo="a vida abraca">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo4">🎵 A Vida, Abraça</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo4">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Q60LbKIewlk" title="A Vida, Abraça" frameborder="0" allowfullscreen></iframe>
+    <p>Que eu entenda,<br>Não preciso andar<br>Quebrar mais nada,<br>Além das correntes,<br>As quais corroem a gente.</p>
+    <p><strong>Uuh, uuh, uuuh...</strong><br>Sonhos flutuam no espaço,<br>Pousam e ousam passos.<br>Passam os pássaros<br>De passadas asas.<br><em>Passam-se os dias, a vida, abraça!</em></p>
+  </div>
+</div>
+
+<!-- Faixa 05 -->
+<div id="letra5" class="letra-musical" data-titulo="hoje eu vou ser so sol">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo5">🎵 Hoje Eu Vou Ser Só Sol</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo5">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/QzXGRmUPLhI" title="Hoje Eu Vou Ser Só Sol" frameborder="0" allowfullscreen></iframe>
+    <p><strong>Hoje eu vou ser só sol.</strong><br>Hoje eu vou ser só sol.<br>Hoje eu vou ser só sol.<br>Hoje eu vou ser só sol...<br>Sol.</p>
+    <p>Passo os dias,<br>Dias passam.<br>Passos.<br>Passo te esperando.<br><em>Tento silenciar a mente</em><br>E o coração gritando.</p>
+  </div>
+</div>
+
+<!-- Faixa 06 -->
+<div id="letra6" class="letra-musical" data-titulo="quem sabe um dia a gente aprende a amar">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo6">🎵 Quem Sabe Um Dia A Gente Aprende A Amar?</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo6">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/uHzuTmyBLwM" title="Quem Sabe Um Dia A Gente Aprende A Amar?" frameborder="0" allowfullscreen></iframe>
+    <p>Você não sabe<br>O bem que me faz<br>O sentimento<br>De que posso amar.</p>
+    <p><strong>Quem sabe a gente pode se ensinar?</strong><br><strong>Quem sabe um dia a gente aprende a amar?</strong></p>
+  </div>
+</div>
+
+<!-- Faixa 07 -->
+<div id="letra7" class="letra-musical" data-titulo="como se fosse hoje">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo7">🎵 Como Se Fosse Hoje (O Dia De Amar)</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo7">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Hqy28ACz_Q0" title="Como Se Fosse Hoje (O Dia De Amar)" frameborder="0" allowfullscreen></iframe>
+    <p>Canto a modéstia e o brio:<br>Desvendo a festa -<br>Revendo-se viu.<br><em>Meu primeiro choro...</em><br>Eu sorri de novo.</p>
+    <p><strong>Se um dia a gente amasse</strong><br>Como se fosse hoje<br>O dia de amar,<br>O amor que o dia trouxe<br>Viria querendo nos abraçar.</p>
+  </div>
+</div>
+
+<!-- Faixa 08 -->
+<div id="letra8" class="letra-musical" data-titulo="guerra nao e partida de futebol">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo8">🎵 Guerra Não É Partida De Futebol</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo8">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/j3ZIvKfM23E" title="Guerra Não É Partida De Futebol" frameborder="0" allowfullscreen></iframe>
+    <p><strong>Guerra não é partida de futebol</strong><br>Nem corrida a tiro livre,<br>Mas tem quem corre<br>E quem atira matando sem dó,<br>Manipulada ira.</p>
+    <p><strong>Mas é que guerra não é partida de futebol.</strong><br><em>(Na guerra contra a vida, quem é que pode vencer?)</em></p>
+  </div>
+</div>
+
+<!-- Faixa 09 -->
+<div id="letra9" class="letra-musical" data-titulo="que a graca esteja">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo9">🎵 Que a Graça Esteja</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo9">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/AT0_Iea_R7M" title="Que a Graça Esteja" frameborder="0" allowfullscreen></iframe>
+    <p><strong>Que a Graça de bem quem disse ser,</strong><br>Que disse para, por bem, se ser,<br>Acima da matéria,<br>Sem riqueza<br>Em se haver misérias.</p>
+    <p><strong>Que a Graça esteja</strong><br>E seja a abençoar.<br>Amém.<br>Amem-se.<br>Amemo-nos.</p>
+  </div>
+</div>
+
+<!-- Faixa 10 -->
+<div id="letra10" class="letra-musical" data-titulo="uma voz que me diz">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo10">🎵 Uma Voz Que Me Diz</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo10">
+    <p><em>(Lançamento em breve!)</em></p>
+    <p>Não seja sua própria presa.<br>Na represa,<br>A vida preserve.<br>Na esperteza a sua riqueza.</p>
+    <p><strong>Uma voz que me diz: Não sofra.</strong><br><strong>Uma voz que me diz: Não morra.</strong><br><strong>Uma voz que me diz: Socorra</strong><br>A si e a quem precisa<br>De ti também.</p>
+  </div>
+</div>
+
+<!-- Faixa 11 -->
+<div id="letra11" class="letra-musical" data-titulo="suspira supera">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo11">🎵 Suspira, Supera</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo11">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/sTntwekkbzY" title="Suspira, Supera - Versão 1" frameborder="0" allowfullscreen></iframe>
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/jNH1hF0mEeM" title="Suspira, Supera - Versão 2" frameborder="0" allowfullscreen></iframe>
+    <p>Não sou tão egoísta assim,<br>Pra gostar sem pena<br>Apenas de mim.</p>
+    <p><strong>Vai com coragem,</strong><br>Ousadia e cuidado.<br><em>É de respeito o medo a ser superado.</em></p>
+  </div>
+</div>
+
+<!-- Faixa 12 -->
+<div id="letra12" class="letra-musical" data-titulo="alma leve">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo12">🎵 Alma Leve</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo12">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/bacD0swy100" title="Alma Leve" frameborder="0" allowfullscreen></iframe>
+    <p>Malditos os que se perdem<br>Na maldição dos perdidos<br>E, em vez de bençãos,<br>Proferem destruição.</p>
+    <p><strong>Alma leve,</strong><br>Sono suave,<br><em>Mente aberta</em><br>Ao bem que me cabe.</p>
+  </div>
+</div>
+
+<!-- Faixa 13 -->
+<div id="letra13" class="letra-musical" data-titulo="conexoes">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo13">🎵 Conexões...</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo13">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/oTSfEfiWP3Y" title="Conexões..." frameborder="0" allowfullscreen></iframe>
+    <p><strong>Eu ouço passos</strong><br>De conexões de espaços...<br><em>Eu me construo e me refaço,</em><br>Cai a noite e vira o Sol.</p>
+    <p><strong>E se o toque</strong><br>É energia ou vampirismo,<br>Clara expressão de terrorismo<br><em>É o abismo social.</em></p>
+  </div>
+</div>
+
+<!-- Faixa 14 -->
+<div id="letra14" class="letra-musical" data-titulo="decola nave escola">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo14">🎵 Decola, Nave Escola</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo14">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/R9PLyXZ6-AM" title="Decola, Nave Escola" frameborder="0" allowfullscreen></iframe>
+    <p><strong>Escola...</strong><br>Descola: um olhar de atenção.<br>Pertence, cê faz parte,<br>Nossa nave, cidadão.</p>
+    <p><strong>Educação...</strong><br>Conheça a si mesmo,<br>Evolua sua conduta.</p>
+  </div>
+</div>
+
+<!-- Faixa 15 -->
+<div id="letra15" class="letra-musical" data-titulo="quem eles sao depois das eleicoes">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo15">🎵 Quem Eles São Depois Das Eleições?</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo15">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/FUxoewYz9Hc" title="Quem Eles São Depois Das Eleições?" frameborder="0" allowfullscreen></iframe>
+    <p><strong>Muito bonito, seus vagabundos,</strong><br>Sentados de terno<br>E de costas pro mundo.</p>
+    <p>Decidem por nós<br>Só pensando em vocês.<br>Acordos covardes,<br>Imbecilidades.</p>
+  </div>
+</div>
+
+<!-- Faixa 16 -->
+<div id="letra16" class="letra-musical" data-titulo="retratos somos nao sos e nao so">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo16">🎵 Retratos Somos Não Sós, e Não Só</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo16">
+    <p><em>(Lançamento em breve!)</em></p>
+    <p>Retratação<br>Nunca foi derrota.<br><em>É na acusação</em><br>E também na chacota<br>Que se perde<br>E nem se vê.</p>
+    <p><strong>Imagina só que beleza:</strong><br>A existência<br>De um bom lugar.</p>
+  </div>
+</div>
+
+<!-- Faixa 17 -->
+<div id="letra17" class="letra-musical" data-titulo="alimento">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo17">🎵 Alimento</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo17">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/eXTUA7zJH7I" title="Alimento" frameborder="0" allowfullscreen></iframe>
+    <p><strong>Qual o gosto do vento?</strong><br>Raio de Sol é alimento...<br><em>Sopro da vida é sustento,</em><br>Suspiro e movimento.</p>
+    <p>Não é só por mim,<br>Nunca foi, enfim.<br><em>Sou apenas um começo.</em></p>
+  </div>
+</div>
+
+<!-- Faixa 18 -->
+<div id="letra18" class="letra-musical" data-titulo="palavra viva">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo18">🎵 Palavra Viva</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo18">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Wh8VPrTt48Y" title="Palavra Viva" frameborder="0" allowfullscreen></iframe>
+    <p>Águia que me guiei,<br>Água que atravessei...<br><em>Ventos que me envolveram,</em><br>Eu envolvi meu sentimento.</p>
+    <p><strong>Se palavra viva em</strong><br>Não soltar da mão.<br>A palavra vive em<br>Não soltar da mão.</p>
+  </div>
+</div>
+
+<!-- Faixa 19 -->
+<div id="letra19" class="letra-musical" data-titulo="jardim cantante">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo19">🎵 Jardim Cantante</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo19">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/GpkcIB14Sfc" title="Jardim Cantante" frameborder="0" allowfullscreen></iframe>
+    <p><strong>O mal sendo regado do bem,</strong><br>O bem sendo regado no mal.<br>Um jardim cantante num trem,<br>Notícia boa até no jornal.</p>
+    <p><strong>Graças! Graças! Graças! Graças!</strong><br>Vem ventos suaves,<br>Abrem-se as asas.</p>
+  </div>
+</div>
+
+<!-- Faixa 20 -->
+<div id="letra20" class="letra-musical" data-titulo="sem rolar rolo rolou">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo20">🎵 Sem Rolar Rolo, Rolou</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo20">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/K0-La7O6VJo" title="Sem Rolar Rolo, Rolou" frameborder="0" allowfullscreen></iframe>
+    <p><strong>Sem rolar rolo,</strong><br>Rolou rola e rebola...<br><strong>Sem rolar rolo,</strong><br>Rolou rola e rebola...</p>
+    <p>Rosto bem pertinho do rosto,<br>Com gosto<br>De deslize e enrosco.<br><em>Suave,</em><br>Que amorzinho gostoso.</p>
+  </div>
+</div>
+
+<!-- Faixa 21 -->
+<div id="letra21" class="letra-musical" data-titulo="continua">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo21">🎵 Continua...</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo21">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/vLKrmjxFH90" title="Continua..." frameborder="0" allowfullscreen></iframe>
+    <p>Olha só nós dois<br>Aqui na nossa casinha.<br><em>O meu amor é seu,</em><br>A sua vitória é a minha.</p>
+    <p><strong>Continua...</strong><br><strong>Continua...</strong></p>
+  </div>
+</div>
+
+<!-- Faixa 22 -->
+<div id="letra22" class="letra-musical" data-titulo="se por um lado">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo22">🎵 Se Por Um Lado...</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo22">
+    <p><em>(Lançamento em breve!)</em></p>
+    <p><strong>Se, Por Um Lado,</strong><br>Não sou bonito,<br>Por outro sou feio.<br><strong>Se, Por Um Lado,</strong><br>Não sou rico,<br>Por outro sou pobre.</p>
+    <p><em>O mais importante de tudo</em><br>É que a vida<br>Tem sempre dois lados!</p>
+  </div>
+</div>
+
+<!-- Faixa 23 -->
+<div id="letra23" class="letra-musical" data-titulo="paz nas ideias">
+  <div class="flex-botoes">
+    <button class="botao-toggle" onclick="toggleLetra(this)" aria-expanded="false" aria-controls="conteudo23">🎵 Paz nas Ideias nas Ideias Sobre a Paz</button>
+  </div>
+  <div class="conteudo-letra" id="conteudo23">
+    <iframe width="100%" height="315" src="https://www.tiktok.com/embed/7504705334997519671" title="Paz nas Ideias nas Ideias Sobre a Paz" frameborder="0" allowfullscreen></iframe>
+    <p><strong>Paz nas ideias</strong><br>Nas ideias sobre a Paz.<br><strong>Paz nas ideias</strong><br>Nas ideias sobre a Paz.</p>
+    <p>Sensatez não é pouco<br>E não é demais,<br><em>Ter certeza, tem vezes,</em><br>Pede um pouco mais.</p>
+  </div>
+</div>
+
+    <!-- Seção de Links para as Músicas -->
+    <section id="musicas" style="padding: 2rem 1rem;">
+      <h2 style="text-align: center; font-family: 'Playfair Display', serif;">🎧 Acesso às Faixas</h2>
+      <ul class="track-list">
+        <li class="track-item"><span class="track-number">01</span><span class="track-title">Bora Até a Vitória:</span><a href="https://www.youtube.com/watch?v=mUeloHQJMXs" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">02</span><span class="track-title">Um Abraço do Tamanho do Mundo:</span><a href="https://www.youtube.com/watch?v=I3VwGTzmLWk" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">03</span><span class="track-title">Deixa Ser:</span><span class="coming-soon">Lançamento em breve!</span></li>
+        <li class="track-item"><span class="track-number">04</span><span class="track-title">A Vida, Abraça:</span><a href="https://www.youtube.com/watch?v=Q60LbKIewlk" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">05</span><span class="track-title">Hoje Eu Vou Ser Só Sol:</span><a href="https://www.youtube.com/watch?v=QzXGRmUPLhI" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">06</span><span class="track-title">Quem Sabe Um Dia A Gente Aprende A Amar?:</span><a href="https://youtu.be/uHzuTmyBLwM?si=rW3bptG4pLjfmXRS" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">07</span><span class="track-title">Como Se Fosse Hoje (O Dia De Amar):</span><a href="https://youtu.be/Hqy28ACz_Q0?si=9I9mjdydbqRsnINf" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">08</span><span class="track-title">Guerra Não É Partida De Futebol:</span><a href="https://youtu.be/j3ZIvKfM23E?si=8U4qcNl5IXY1_yQQ" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">09</span><span class="track-title">Que a Graça Esteja:</span><a href="https://youtu.be/AT0_Iea_R7M?si=LYNS3OziaWhcm1CG" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">10</span><span class="track-title">Uma Voz Que Me Diz:</span><span class="coming-soon">Lançamento em breve!</span></li>
+        <li class="track-item"><span class="track-number">11</span><span class="track-title">Suspira, Supera:</span><a href="https://youtu.be/sTntwekkbzY" class="track-link" target="_blank">Versão 1</a> <a href="https://youtu.be/jNH1hF0mEeM" class="track-link" target="_blank">Versão 2</a></li>
+        <li class="track-item"><span class="track-number">12</span><span class="track-title">Alma Leve:</span><a href="https://youtu.be/bacD0swy100?si=aQCdazctnukEZ0G8" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">13</span><span class="track-title">Conexões...:</span><a href="https://youtu.be/oTSfEfiWP3Y?si=XuliathfNTIlgSmK" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">14</span><span class="track-title">Decola, Nave Escola:</span><a href="https://youtu.be/R9PLyXZ6-AM?si=uiwIhTorquIs-r-4" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">15</span><span class="track-title">Quem Eles São Depois Das Eleições?:</span><a href="https://youtu.be/FUxoewYz9Hc?si=kB0ChvWGL1q76B6t" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">16</span><span class="track-title">Retratos Somos Não Sós, e Não Só:</span><span class="coming-soon">Lançamento em breve!</span></li>
+        <li class="track-item"><span class="track-number">17</span><span class="track-title">Alimento:</span><a href="https://youtu.be/eXTUA7zJH7I?si=pVcM_qKo6jyEn5nD" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">18</span><span class="track-title">Palavra Viva:</span><a href="https://youtu.be/Wh8VPrTt48Y?si=Ljr7jUVwUzzfW0Ge" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">19</span><span class="track-title">Jardim Cantante:</span><a href="https://youtu.be/GpkcIB14Sfc?si=EOLm4XOmQC3Mh00u" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">20</span><span class="track-title">Sem Rolar Rolo, Rolou:</span><a href="https://youtu.be/K0-La7O6VJo?si=miqIxenjMKDA8Kl1" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">21</span><span class="track-title">Continua...:</span><a href="https://youtu.be/vLKrmjxFH90?si=Ng82DZST6BxljrRR" class="track-link" target="_blank">YouTube</a></li>
+        <li class="track-item"><span class="track-number">22</span><span class="track-title">Se Por Um Lado...:</span><span class="coming-soon">Lançamento em breve!</span></li>
+        <li class="track-item"><span class="track-number">23</span><span class="track-title">Paz nas Ideias nas Ideias Sobre a Paz:</span><a href="https://www.tiktok.com/@jota.carneiro5/video/7504705334997519671" class="track-link" target="_blank">TikTok</a></li>
+      </ul>
+    </section>
+
+    <!-- Rodapé -->
+    <footer style="text-align: center; padding: 2rem; background: #2c3e50; color: white;">
+      <p style="margin: 0;">&copy; 2025 – Jota Carneiro. Todos os direitos reservados.</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem;">Projeto desenvolvido com amor, poesia e tecnologia.</p>
+    </footer>
+  </main>
+
+  <!-- Botões flutuantes -->
+  <button class="doacao-btn" onclick="abrirModalQR()" title="Apoiar com doação">💖</button>
+  
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    style="position: fixed; bottom: 20px; right: 20px; background: #3498db; color: white; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 1.2rem; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 1000;"
+    title="Voltar ao topo">
+    ⬆️
+  </button>
+
+  <button onclick="document.body.classList.toggle('modo-claro')" title="Alternar tema"
+    style="position: fixed; top: 20px; right: 20px; background: #333; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.4rem; cursor: pointer; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+    🌓
+  </button>
+
+  <!-- Modais -->
+  <div id="qrModal">
+    <div class="modal-content">
+      <h3>🌟 Apoie este projeto</h3>
+      <p>Escolha uma forma de contribuir com carinho:</p>
+      <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+        <div>
+          <img src="qrcode-valor-aberto.png" alt="QR Code para doação com valor livre" />
+          <p style="margin-top: 0.5rem;">Valor livre</p>
+        </div>
+        <div>
+          <img src="qrcode-valor-fixo.png" alt="QR Code para doação sugerida" />
+          <p style="margin-top: 0.5rem;">R$ 12 – Um abraço simbólico 💙</p>
+        </div>
+      </div>
+      <button onclick="fecharModalQR()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal Sobre o Autor -->
+  <div id="autorModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1001; text-align:center; padding-top:5%;">
+    <div class="modal-content" style="background:white; display:inline-block; padding:2rem; border-radius:10px; max-width:90%; position:relative;">
+      <button onclick="fecharModalAutor()" style="float: right; margin-bottom: 1rem;">Fechar</button>
+      <h3>👤 Sobre o Autor</h3>
+      <p>Jota Carneiro é Professor de História, Escritor, Poeta e Compositor.</p>
+      <img src="capa.jpg" alt="Imagem do autor Jota Carneiro" style="max-width:200px; border-radius:8px; margin-bottom:1rem;" />
+    </div>
+  </div>
+
+  <!-- Modal Doações -->
+  <div id="doacaoModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1001; text-align:center; padding-top:5%;">
+    <div class="modal-content" style="background:white; display:inline-block; padding:2rem; border-radius:10px; max-width:90%; position:relative;">
+      <button onclick="fecharModalDoacao()" style="float: right; margin-bottom: 1rem;">Fechar</button>
+      <p>Escolha uma forma de contribuir com carinho:</p>
+      <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+        <div>
+          <img src="qrcode-valor-aberto.jpg" alt="QR Code para doação com valor livre" />
+          <p style="margin-top: 0.5rem;">Valor livre</p>
+        </div>
+        <div>
+          <img src="qrcode-valor-fixo.jpg" alt="QR Code para doação sugerida" />
+          <p style="margin-top: 0.5rem;">R$ 12 – Um abraço simbólico 💙</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
