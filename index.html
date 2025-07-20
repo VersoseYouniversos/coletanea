@@ -564,7 +564,6 @@ body.modo-claro .indice-horizontal li a {
 
       // Obter o ID da letra a partir do container pai
       const letraContainer = button.closest('.letra-musical');
-      const letraId = letraContainer.id;
       const nomeMusica = letraContainer.getAttribute('data-titulo');
       
       // Converter título para slug (formato usado nos links)
@@ -577,19 +576,75 @@ body.modo-claro .indice-horizontal li a {
         .replace(/-+/g, '-') // Remove hífens duplicados
         .trim();
 
-      // Copiar link ao abrir
+      // Copiar link ao abrir e mostrar notificação
       if (novoEstado) {
         const baseURL = window.location.origin + window.location.pathname;
         const link = `${baseURL}#${slugMusica}`;
+        
         navigator.clipboard.writeText(link)
-          .then(() => console.log("Link copiado!"))
+          .then(() => {
+            // Criar e mostrar notificação
+            mostrarNotificacao("Endereço copiado!");
+            // Atualizar URL sem recarregar a página
+            window.history.pushState({}, '', `#${slugMusica}`);
+          })
           .catch(() => console.log("Erro ao copiar link"));
+      } else {
+        // Remover hash quando fechar
+        window.history.pushState({}, '', window.location.pathname);
       }
 
       // Destacar faixa ativa no índice
       document.querySelectorAll('.indice-horizontal a').forEach(link => link.classList.remove('ativo'));
-      const linkAtivo = document.querySelector(`.indice-horizontal a[href="#${slugMusica}"]`);
-      if (linkAtivo) linkAtivo.classList.add('ativo');
+      if (novoEstado) {
+        const linkAtivo = document.querySelector(`.indice-horizontal a[href="#${slugMusica}"]`);
+        if (linkAtivo) linkAtivo.classList.add('ativo');
+      }
+    }
+
+    function mostrarNotificacao(mensagem) {
+      // Remover notificação anterior se existir
+      const notificacaoExistente = document.querySelector('.notificacao-copia');
+      if (notificacaoExistente) {
+        notificacaoExistente.remove();
+      }
+
+      // Criar nova notificação
+      const notificacao = document.createElement('div');
+      notificacao.className = 'notificacao-copia';
+      notificacao.textContent = mensagem;
+      notificacao.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #28a745;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 500;
+        z-index: 10000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      `;
+      
+      document.body.appendChild(notificacao);
+      
+      // Animar entrada
+      setTimeout(() => {
+        notificacao.style.opacity = '1';
+      }, 100);
+      
+      // Remover após 3 segundos
+      setTimeout(() => {
+        notificacao.style.opacity = '0';
+        setTimeout(() => {
+          if (notificacao.parentNode) {
+            notificacao.remove();
+          }
+        }, 300);
+      }, 3000);
     }
 
     function abrirModalQR() {
@@ -652,13 +707,33 @@ body.modo-claro .indice-horizontal li a {
               block: 'center' 
             });
             
-            // Abrir a letra automaticamente
+            // Abrir a letra automaticamente se não estiver aberta
             const button = targetContainer.querySelector('.botao-toggle');
             const conteudo = targetContainer.querySelector('.conteudo-letra');
             
             if (button && !conteudo.classList.contains('ativo')) {
-              toggleLetra(button);
+              setTimeout(() => {
+                toggleLetra(button);
+              }, 500); // Aguardar o scroll terminar
             }
+          }
+        });
+      });
+
+      // Adicionar event listener para o link "Músicas" no menu
+      document.querySelectorAll('nav.web-nav a[href="#musicas"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Encontrar o banner "Aprecie as músicas abaixo..."
+          const banner = document.querySelector('div[style*="background: linear-gradient(90deg, #f0f8ff, #e6f7ff)"]');
+          
+          if (banner) {
+            // Scroll suave até o banner
+            banner.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
           }
         });
       });
@@ -673,7 +748,24 @@ body.modo-claro .indice-horizontal li a {
           }, 500);
         }
       }
+
+      // Detectar mudanças no hash da URL (botão voltar/avançar)
+      window.addEventListener('hashchange', function() {
+        if (window.location.hash) {
+          const hash = window.location.hash.substring(1);
+          const link = document.querySelector(`.indice-horizontal a[href="#${hash}"]`);
+          if (link) {
+            link.click();
+          }
+        }
+      });
     });
+
+    // Manter as funções antigas para compatibilidade (caso ainda sejam usadas em algum lugar)
+    function abrirLetraECopiar(botao, conteudoId, nomeMusica) {
+      // Esta função agora redireciona para toggleLetra para manter compatibilidade
+      toggleLetra(botao);
+    }
   </script>
 </head>
 
