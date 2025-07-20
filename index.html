@@ -580,7 +580,7 @@
         .replace(/^-|-$/g, ''); // Remove hífens do início e fim
     }
 
-    // Função principal para alternar letra
+    // Função principal para alternar letra (usada pelos botões das letras)
     function toggleLetra(button) {
       const conteudo = button.nextElementSibling;
       const letraContainer = button.closest('.letra-musical');
@@ -602,6 +602,7 @@
         if (btn !== button) {
           btn.setAttribute('aria-expanded', 'false');
           btn.nextElementSibling.classList.remove('ativo');
+          removerAnimacaoSom(btn);
         }
       });
 
@@ -643,9 +644,16 @@
       }
     }
 
-    // Função para navegar pelo índice
+    // Função para navegar pelo índice (usada pelos botões do índice)
     function navegarParaLetra(slug, event) {
       event.preventDefault();
+      
+      // Verificar se é uma faixa em breve
+      const faixasEmBreve = ['deixa-ser', 'uma-voz-que-me-diz', 'retratos-somos-nao-sos-e-nao-so', 'se-por-um-lado'];
+      if (faixasEmBreve.includes(slug)) {
+        mostrarNotificacao('Essa faixa será lançada em breve! 🎵');
+        return;
+      }
       
       const letraId = slugParaId[slug];
       if (!letraId) return;
@@ -701,17 +709,13 @@
 
     // Função para adicionar animação sonora
     function adicionarAnimacaoSom(button, slug) {
-      const flexBotoes = button.parentElement.querySelector('.flex-botoes');
-      let barraContainer = flexBotoes?.querySelector('.animacao-som');
+      const flexBotoes = button.parentElement;
+      let barraContainer = flexBotoes.querySelector('.animacao-som');
       
       if (!barraContainer) {
         barraContainer = document.createElement('div');
         barraContainer.className = 'animacao-som';
-        if (flexBotoes) {
-          flexBotoes.appendChild(barraContainer);
-        } else {
-          button.parentElement.appendChild(barraContainer);
-        }
+        flexBotoes.appendChild(barraContainer);
       }
       
       barraContainer.setAttribute('data-musica', slug);
@@ -726,7 +730,8 @@
 
     // Função para remover animação sonora
     function removerAnimacaoSom(button) {
-      const barraContainer = button.parentElement.querySelector('.animacao-som');
+      const flexBotoes = button.parentElement;
+      const barraContainer = flexBotoes.querySelector('.animacao-som');
       if (barraContainer) {
         barraContainer.innerHTML = '';
       }
