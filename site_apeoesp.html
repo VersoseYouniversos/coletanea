@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEOESP - Subsede de Ourinhos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: url('fachada.png') center/cover;
+            background-color: rgba(30, 60, 114, 0.9);
+            background-blend-mode: overlay;
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 40px;
+        }
+
+        .header-content img {
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .header-content img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Menu de Navegação */
+        nav {
+            background: linear-gradient(90deg, #2c5aa0 0%, #1e3c72 100%);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 18px 35px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-menu a:hover::before {
+            left: 100%;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,165,0,0.9);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Seção Inicial */
+        #inicio {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #inicio h1 {
+            color: #1e3c72;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        #inicio p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Manual do Professor */
+        #manual {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        #manual h2 {
+            color: #1e3c72;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* Acordeão */
+        .accordion {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accordion::after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.active::after {
+            content: '\2212';
+            transform: rotate(180deg);
+        }
+
+        .accordion:hover {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.3);
+        }
+
+        .accordion.active {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+        }
+
+        /* Painel do Acordeão */
+        .panel {
+            padding: 0;
+            background-color: #f8f9fa;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 20px;
+        }
+
+        .panel.active {
+            max-height: 1000px;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+        }
+
+        .panel button {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            color: #495057;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .panel button:hover {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            border-color: #ff6b35;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(255,107,53,0.3);
+        }
+
+        /* Popup */
+        #popupManual {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 1001;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 3px solid #1e3c72;
+        }
+
+        #popupManual h3 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        #popupManual button {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        #popupManual button:hover {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.3);
+        }
+
+        /* Overlay */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Seção Sobre */
+        #sobre {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        #sobre h2 {
+            color: #1e3c72;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        #sobre p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #666;
+            text-align: justify;
+        }
+
+        /* Rodapé */
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        footer small {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .header-content img {
+                height: 60px;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-menu a {
+                padding: 15px 20px;
+                text-align: center;
+            }
+
+            #inicio h1 {
+                font-size: 2em;
+            }
+
+            #manual h2 {
+                font-size: 1.8em;
+            }
+
+            .accordion {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            #popupManual {
+                max-width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-content">
+            <img src="logotipo.png" alt="Logotipo" onerror="this.style.display='none'">
+            <img src="apeoespsub.png" alt="APEOESP Subsede" onerror="this.style.display='none'">
+            <img src="qrcode.png" alt="QR Code" onerror="this.style.display='none'">
+        </div>
+    </header>
+
+    <!-- Menu de Navegação -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#" onclick="mostrarSecao('inicio')">Início</a></li>
+                <li><a href="#" onclick="mostrarSecao('manual')">Manual do Professor</a></li>
+                <li><a href="#" onclick="mostrarSecao('sobre')">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- Seção Inicial -->
+        <main id="inicio">
+            <h1>APEOESP - Subsede de Ourinhos</h1>
+            <p>Bem-vindos ao site da APEOESP Subsede de Ourinhos. Aqui você encontrará informações importantes sobre direitos, deveres e orientações para professores da rede estadual de ensino.</p>
+            <p>Utilize o menu acima para navegar pelas diferentes seções do site e acessar o Manual do Professor com todas as informações necessárias para o exercício da sua profissão.</p>
+        </main>
+
+        <!-- Manual do Professor -->
+        <main id="manual" style="display:none;">
+            <h2>Manual do Professor</h2>
+            
+            <!-- Seções expansíveis do Manual do Professor -->
+            <!-- 1. Aposentadoria e Previdência -->
+            <button class="accordion">1. Aposentadoria e Previdência</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Abono de Permanência')">Abono de Permanência</button>
+                <button onclick="abrirPopupManual('Aposentadoria do Servidor Público')">Aposentadoria do Servidor Público</button>
+                <button onclick="abrirPopupManual('Aposentadoria Voluntária')">Aposentadoria Voluntária</button>
+                <button onclick="abrirPopupManual('Aposentadoria para Especialistas')">Aposentadoria para Especialistas</button>
+                <button onclick="abrirPopupManual('Reforma da Previdência')">Reforma da Previdência</button>
+                <button onclick="abrirPopupManual('Pensão Mensal')">Pensão Mensal</button>
+                <button onclick="abrirPopupManual('Isenção de Imposto de Renda')">Isenção de Imposto de Renda</button>
+            </div>
+
+            <!-- 2. Licenças e Afastamentos -->
+            <button class="accordion">2. Licenças e Afastamentos</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Licença Gestante')">Licença Gestante</button>
+                <button onclick="abrirPopupManual('Licença Paternidade')">Licença Paternidade</button>
+                <button onclick="abrirPopupManual('Licença para Adoção')">Licença para Adoção</button>
+                <button onclick="abrirPopupManual('Licença por Acidente')">Licença por Acidente</button>
+                <button onclick="abrirPopupManual('Licença por Doença em Familiar')">Licença por Doença em Familiar</button>
+                <button onclick="abrirPopupManual('Licença-Prêmio')">Licença-Prêmio</button>
+                <button onclick="abrirPopupManual('Licença Saúde')">Licença Saúde</button>
+                <button onclick="abrirPopupManual('Licença Compulsória')">Licença Compulsória</button>
+                <button onclick="abrirPopupManual('Licença para Interesses Particulares')">Licença para Interesses Particulares</button>
+                <button onclick="abrirPopupManual('Nojo')">Nojo</button>
+                <button onclick="abrirPopupManual('Gala')">Gala</button>
+                <button onclick="abrirPopupManual('Trânsito')">Trânsito</button>
+            </div>
+
+            <!-- 3. Direitos e Vantagens -->
+            <button class="accordion">3. Direitos e Vantagens</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Adicional de Local de Exercício')">Adicional de Local de Exercício</button>
+                <button onclick="abrirPopupManual('Adicional por Tempo de Serviço')">Adicional por Tempo de Serviço</button>
+                <button onclick="abrirPopupManual('Sexta-Parte')">Sexta-Parte</button>
+                <button onclick="abrirPopupManual('Gratificação Pro Labore')">Gratificação Pro Labore</button>
+                <button onclick="abrirPopupManual('GTN')">GTN</button>
+                <button onclick="abrirPopupManual('Serviço Extraordinário')">Serviço Extraordinário</button>
+                <button onclick="abrirPopupManual('Salário-Família')">Salário-Família</button>
+                <button onclick="abrirPopupManual('13º Salário')">13º Salário</button>
+                <button onclick="abrirPopupManual('Auxílio-Alimentação')">Auxílio-Alimentação</button>
+                <button onclick="abrirPopupManual('Auxílio-Funeral')">Auxílio-Funeral</button>
+                <button onclick="abrirPopupManual('Auxílio-Transporte')">Auxílio-Transporte</button>
+            </div>
+
+            <!-- 4. Jornada, Carga Horária e Faltas -->
+            <button class="accordion">4. Jornada, Carga Horária e Faltas</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Jornada de Trabalho Docente')">Jornada de Trabalho Docente</button>
+                <button onclick="abrirPopupManual('Carga Suplementar')">Carga Suplementar</button>
+                <button onclick="abrirPopupManual('Horas de Trabalho Pedagógico')">Horas de Trabalho Pedagógico</button>
+                <button onclick="abrirPopupManual('Faltas')">Faltas</button>
+                <button onclick="abrirPopupManual('Inassiduidade')">Inassiduidade</button>
+                <button onclick="abrirPopupManual('Descontos')">Descontos</button>
+                <button onclick="abrirPopupManual('Recreio Dirigido')">Recreio Dirigido</button>
+            </div>
+
+            <!-- 5. Carreira e Evolução Funcional -->
+            <button class="accordion">5. Carreira e Evolução Funcional</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Evolução Funcional')">Evolução Funcional</button>
+                <button onclick="abrirPopupManual('Via Acadêmica')">Via Acadêmica</button>
+                <button onclick="abrirPopupManual('Via Não Acadêmica')">Via Não Acadêmica</button>
+                <button onclick="abrirPopupManual('Estabilidade')">Estabilidade</button>
+                <button onclick="abrirPopupManual('Estabilidade Excepcional')">Estabilidade Excepcional</button>
+                <button onclick="abrirPopupManual('Estabilidade Lei 500/74')">Estabilidade Lei 500/74</button>
+                <button onclick="abrirPopupManual('Readaptados')">Readaptados</button>
+                <button onclick="abrirPopupManual('Readmissão')">Readmissão</button>
+                <button onclick="abrirPopupManual('Provimento dos Cargos')">Provimento dos Cargos</button>
+            </div>
+
+            <!-- 6. Organização Escolar e Gestão -->
+            <button class="accordion">6. Organização Escolar e Gestão</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Atribuição de Aulas')">Atribuição de Aulas</button>
+                <button onclick="abrirPopupManual('Coordenador de Equipe Curricular')">Coordenador de Equipe Curricular</button>
+                <button onclick="abrirPopupManual('Coordenador de Gestão Pedagógica')">Coordenador de Gestão Pedagógica</button>
+                <button onclick="abrirPopupManual('Vice-Diretor de Escola')">Vice-Diretor de Escola</button>
+                <button onclick="abrirPopupManual('Conselho de Escola')">Conselho de Escola</button>
+                <button onclick="abrirPopupManual('CEL')">CEL</button>
+            </div>
+
+            <!-- 7. Substituições e Movimentações -->
+            <button class="accordion">7. Substituições e Movimentações</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Substituição Docente')">Substituição Docente</button>
+                <button onclick="abrirPopupManual('Substituição Suporte Pedagógico')">Substituição Suporte Pedagógico</button>
+                <button onclick="abrirPopupManual('Substituição Eventual')">Substituição Eventual</button>
+                <button onclick="abrirPopupManual('Remoção')">Remoção</button>
+            </div>
+
+            <!-- 8. Categorias e Situações Específicas -->
+            <button class="accordion">8. Categorias e Situações Específicas</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Categoria O')">Categoria "O"</button>
+                <button onclick="abrirPopupManual('Adidos')">Adidos</button>
+                <button onclick="abrirPopupManual('Deficientes Físicos')">Deficientes Físicos</button>
+            </div>
+
+            <!-- 9. Direitos e Garantias Legais -->
+            <button class="accordion">9. Direitos e Garantias Legais</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Direito de Defesa')">Direito de Defesa</button>
+                <button onclick="abrirPopupManual('Direito de Petição')">Direito de Petição</button>
+                <button onclick="abrirPopupManual('Liberdade de Cátedra')">Liberdade de Cátedra</button>
+                <button onclick="abrirPopupManual('Imposto de Renda')">Imposto de Renda</button>
+                <button onclick="abrirPopupManual('Penalidades Disciplinares')">Penalidades Disciplinares</button>
+                <button onclick="abrirPopupManual('Recurso de Alunos')">Recurso de Alunos</button>
+            </div>
+
+            <!-- 10. Tempo de Serviço -->
+            <button class="accordion">10. Tempo de Serviço</button>
+            <div class="panel">
+                <button onclick="abrirPopupManual('Averbação de Tempo')">Averbação de Tempo</button>
+                <button onclick="abrirPopupManual('Contagem de Tempo')">Contagem de Tempo</button>
+                <button onclick="abrirPopupManual('Certidão de Tempo de Serviço')">Certidão de Tempo de Serviço</button>
+            </div>
+
+            <!-- Popup de conteúdo do manual -->
+            <div id="popupManual">
+                <h3 id="popupTitulo"></h3>
+                <div id="popupTexto" style="white-space:pre-wrap; font-size:15px; line-height:1.5;"></div>
+                <br>
+                <button onclick="fecharPopupManual()">Fechar</button>
+            </div>
+
+            <!-- Overlay para escurecer fundo -->
+            <div id="overlay"></div>
+        </main>
+
+        <!-- Seção Sobre -->
+        <main id="sobre" style="display:none;">
+            <h2>Sobre a APEOESP</h2>
+            <p>A APEOESP (Sindicato dos Professores do Ensino Oficial do Estado de São Paulo) é uma entidade sindical que representa os professores da rede estadual de ensino de São Paulo. Nossa subsede em Ourinhos atua em defesa dos direitos e interesses dos educadores da região.</p>
+            <p>Nosso compromisso é oferecer suporte, orientação e representação aos professores, garantindo melhores condições de trabalho, valorização profissional e defesa dos direitos conquistados ao longo dos anos.</p>
+            <p>Este manual digital foi desenvolvido para facilitar o acesso às informações essenciais para o exercício da docência, reunindo as principais orientações sobre direitos, deveres e procedimentos administrativos.</p>
+        </main>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2025 APEOESP - Subsede de Ourinhos</p>
+        <p><small>As informações do manual estão sujeitas a alterações ocorridas a partir de <strong>01 de Janeiro de 2025</strong>.</small></p>
+    </footer>
+
+    <script>
+        // Dados do manual (exemplo de conteúdo)
+        const dadosManual = {
+            'Abono de Permanência': 'O Abono de Permanência é um incentivo financeiro concedido ao servidor que já possui os requisitos para aposentadoria voluntária, mas opta por permanecer em atividade. O valor corresponde ao da contribuição previdenciária que seria descontada.\n\nRequisitos:\n- Ter cumprido os requisitos para aposentadoria voluntária\n- Permanecer em atividade\n- Não ter requerido aposentadoria\n\nO abono é pago mensalmente junto com a remuneração e cessa quando o servidor se aposentar ou completar 70 anos (para homens) ou 65 anos (para mulheres).',
+            
+            'Aposentadoria do Servidor Público': 'A aposentadoria do servidor público estadual segue regras específicas estabelecidas pela legislação previdenciária.\n\nModalidades:\n- Aposentadoria por invalidez\n- Aposentadoria compulsória (aos 75 anos)\n- Aposentadoria voluntária\n\nPara cada modalidade existem requisitos específicos de idade, tempo de contribuição e tempo de serviço público. É importante consultar a legislação vigente e buscar orientação especializada.',
+            
+            'Licença Gestante': 'A licença gestante é um direito assegurado à servidora pública.\n\nCaracterísticas:\n- Duração: 120 dias\n- Pode ser prorrogada por mais 60 dias (Lei 11.770/2008)\n- Início: a partir do 8º mês de gestação ou do parto\n- Remuneração integral durante o período\n\nDocumentação necessária:\n- Atestado médico\n- Requerimento dirigido ao dirigente da unidade\n- Cópia da certidão de nascimento (após o parto)',
+            
+            'Jornada de Trabalho Docente': 'A jornada de trabalho docente é regulamentada por legislação específica.\n\nTipos de jornada:\n- Jornada Inicial: 16 horas/aula semanais\n- Jornada Básica: 24 horas/aula semanais\n- Jornada Integral: 32 horas/aula semanais\n- Jornada Reduzida: para readaptados\n\nComposição da jornada:\n- Horas-aula com alunos\n- Horas de trabalho pedagógico (HTP)\n- Horas de trabalho pedagógico coletivo (HTPC)'
+        };
+
+        // Função para mostrar seções
+        function mostrarSecao(secao) {
+            // Esconder todas as seções
+            document.getElementById('inicio').style.display = 'none';
+            document.getElementById('manual').style.display = 'none';
+            document.getElementById('sobre').style.display = 'none';
+            
+            // Mostrar a seção selecionada
+            document.getElementById(secao).style.display = 'block';
+        }
+
+        // Funcionalidade do acordeão
+        document.addEventListener('DOMContentLoaded', function() {
+            var accordions = document.getElementsByClassName('accordion');
+            
+            for (var i = 0; i < accordions.length; i++) {
+                accordions[i].addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    var panel = this.nextElementSibling;
+                    
+                    if (panel.classList.contains('active')) {
+                        panel.classList.remove('active');
+                    } else {
+                        panel.classList.add('active');
+                    }
+                });
+            }
+        });
+
+        // Função para abrir popup do manual
+        function abrirPopupManual(topico) {
+            document.getElementById('popupTitulo').textContent = topico;
+            
+            var conteudo = dadosManual[topico] || 'Conteúdo em desenvolvimento. Em breve mais informações sobre este tópico estarão disponíveis.\n\nPara informações mais detalhadas, entre em contato com a APEOESP Subsede de Ourinhos.';
+            
+            document.getElementById('popupTexto').textContent = conteudo;
+            document.getElementById('popupManual').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Função para fechar popup do manual
+        function fecharPopupManual() {
+            document.getElementById('popupManual').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar popup ao clicar no overlay
+        document.getElementById('overlay').addEventListener('click', fecharPopupManual);
+
+        // Fechar popup com tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                fecharPopupManual();
+            }
+        });
+    </script>
+</body>
+</html>
